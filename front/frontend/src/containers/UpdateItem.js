@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import CSRFToken from "../components/CSRFToken";
-import {new_item, update_item} from "../actions/cart";
+import {update_item} from "../actions/cart";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 
 const NewItem = ({update_item, pk_helper}) => {
-    let counter = 0;
     console.log('pk >', pk_helper, typeof pk_helper)
     const [formData, setFormData] = useState({
         name:'',
@@ -20,11 +19,8 @@ const NewItem = ({update_item, pk_helper}) => {
     const onSubmit = e => {
         e.preventDefault();
         update_item(name, price, image, description, Number(pk_helper))
-        counter++
         return <Navigate to='/catalog'/>
     }
-
-
 
     return (
         <div className='container mt-3'>
@@ -83,10 +79,8 @@ const NewItem = ({update_item, pk_helper}) => {
             </form>
         </div>
     )
-
 };
 const mapStateToProps = state => ({
     pk_helper: state.cart.pk_helper
 })
-
 export default connect(mapStateToProps, {update_item})(NewItem);

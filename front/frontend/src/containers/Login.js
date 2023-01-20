@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {login} from "../actions/auth";
 import {connect} from "react-redux";
 import {Link, Navigate} from "react-router-dom";
-
 import CSRFToken from "../components/CSRFToken";
 
 const Login = ({login, isAuthenticated}) => {
@@ -61,9 +60,7 @@ const Login = ({login, isAuthenticated}) => {
         </div>
     );
 };
-
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 })
-
 export default connect(mapStateToProps, {login})(Login);

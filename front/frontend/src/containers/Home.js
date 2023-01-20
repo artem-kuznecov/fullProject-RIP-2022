@@ -5,7 +5,6 @@ const Home = () => {
     return (
         <div className='container'>
             <div className='mt-5 p-5 bg-light'>
-                {/*<h1 className='display-4'>Главная страница</h1>*/}
                 <h1 className='display-4'>
                     LABEquip - поставщик лабораторного оборудования в школы, университеты, научные исследовательские центры
                 </h1>

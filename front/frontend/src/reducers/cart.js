@@ -1,6 +1,4 @@
 import {
-    CREATE_ORDER_SUCCESS,
-    CREATE_ORDER_FAIL,
     UPDATE_GOOD_FAIL,
     UPDATE_GOOD_SUCCESS,
     SAVER
@@ -24,8 +22,7 @@ export default function (state = initialState, action) {
         case UPDATE_GOOD_FAIL:
         case UPDATE_GOOD_SUCCESS:
             return {
-                ...state,
-                // pk_helper: payload
+                ...state
             }
         default:
             return state;

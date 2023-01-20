@@ -7,13 +7,13 @@ import {
     UPDATE_USER_PROFILE_FAIL
 } from "./types";
 
+
 export const load_user = () => async dispatch => {
     const config = {
         withCredentials: true,
         headers: {
             'Accept':'application/json',
-            'Content-Type': 'application/json',
-            // 'X-CSRFToken': Cookies.get('csrftoken')
+            'Content-Type': 'application/json'
         }
     }
 
@@ -89,8 +89,7 @@ export const cartTest = (good) => async dispatch => {
         withCredentials: true,
         headers: {
             'Accept':'application/json',
-            'Content-Type': 'application/json',
-            // 'X-CSRFToken': Cookies.get('csrftoken')
+            'Content-Type': 'application/json'
         }
     });
 

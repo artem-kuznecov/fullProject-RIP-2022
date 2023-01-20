@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-// import Cookies from "js-cookie";
 import ItemCard from "../components/ItemCard";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
@@ -25,8 +24,7 @@ const Catalog = ({isAuthenticated, is_staff}) => {
             withCredentials: true,
             headers: {
                 'Accept':'application/json',
-                'Content-Type':'application/json',
-                // 'X-CSRFToken': Cookies.get('csrftoken')
+                'Content-Type':'application/json'
             }
         }
         axios.get(src, config)
@@ -58,17 +56,6 @@ const Catalog = ({isAuthenticated, is_staff}) => {
                 <Link to='/new_item'>Добавление товара</Link>
             </h4>: null}
             <h2 className='mb-40 mt-20'>Каталог товаров:</h2>
-
-            {/*{items.map((item, index) => {*/}
-            {/*    return (*/}
-            {/*        <div className='d-ib flex m-1'>*/}
-            {/*            <ItemCard key={index} cartChecker={ttt} userID={userID} is_staff={is_staff}*/}
-            {/*                  {...item}*/}
-            {/*            />*/}
-            {/*        </div>*/}
-            {/*    );*/}
-            {/*})}*/}
-
             {items.filter((obj) => {
                 if (obj.name.toLowerCase().includes(searchValue.toLowerCase())) {
                     return true
@@ -77,13 +64,10 @@ const Catalog = ({isAuthenticated, is_staff}) => {
             }).map((item, index) => {
                 return (
                     <div className='d-ib flex m-1'>
-                        <ItemCard key={index} cartChecker={ttt} userID={userID} is_staff={is_staff}
-                                  {...item}
-                        />
+                        <ItemCard key={index} cartChecker={ttt} userID={userID} is_staff={is_staff} {...item}/>
                     </div>
                 );
             })}
-
         </div>
     );
 };
@@ -91,6 +75,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
     is_staff: state.auth.is_staff
 })
-
 export default connect(mapStateToProps, {})(Catalog);
-// export default Catalog;

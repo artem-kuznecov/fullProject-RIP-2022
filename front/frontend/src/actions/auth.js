@@ -21,8 +21,7 @@ export const is_user_staff = () => async dispatch => {
         withCredentials: true,
         headers: {
             'Accept':'application/json',
-            'Content-Type': 'application/json',
-            // 'X-CSRFToken': Cookies.get('csrftoken')
+            'Content-Type': 'application/json'
         }
     }
 
@@ -118,14 +117,12 @@ export const login = (username, password) => async dispatch => {
     const body = JSON.stringify({username, password})
 
     try {
-        // const res = await axios.post(`${process.env.REACT_APP_API_URL}/accounts/login`, body, config)
         const res = await axios.post(`http://localhost:8000/accounts/login`, body, config)
 
         if (res.data.success) {
             console.log(LOGIN_SUCCESS)
             dispatch({
-                type: LOGIN_SUCCESS,
-                // payload: res.data.username
+                type: LOGIN_SUCCESS
             })
 
             dispatch(load_user());

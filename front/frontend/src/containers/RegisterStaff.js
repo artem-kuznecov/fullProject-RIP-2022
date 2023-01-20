@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {register} from "../actions/auth";
 import {connect} from "react-redux";
 import {Link, Navigate} from "react-router-dom";
-
 import CSRFToken from "../components/CSRFToken";
 
 const Register = ({register, isAuthenticated}) => {
@@ -12,7 +11,6 @@ const Register = ({register, isAuthenticated}) => {
         re_password:'',
         secret_key:''
     });
-
     const [accountCreated, setAccountCreated] = useState(false);
 
     const {username, password, re_password, secret_key} = formData;
@@ -21,7 +19,6 @@ const Register = ({register, isAuthenticated}) => {
 
     const onSubmit = e => {
         e.preventDefault();
-
         if (password === re_password && secret_key === 'secret') {
             register(username, password, re_password)
             setAccountCreated(true)
@@ -32,7 +29,6 @@ const Register = ({register, isAuthenticated}) => {
         return <Navigate to='/dashboard'/>
     else if (accountCreated)
         return <Navigate to='/login'/>
-
 
     return (
         <div className='container mt-3'>
@@ -96,9 +92,7 @@ const Register = ({register, isAuthenticated}) => {
         </div>
     );
 };
-
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 })
-
 export default connect(mapStateToProps, {register})(Register);

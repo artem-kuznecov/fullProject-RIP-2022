@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import {BrowserRouter as Router, Routes, Route, HashRouter} from "react-router-dom";
+import React from "react";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './index.css';
 
 import Layout from "./hocs/Layout";
@@ -11,7 +11,6 @@ import Login from "./containers/Login";
 import Dashboard from "./containers/Dashboard";
 import Catalog from "./containers/Catalog";
 import ItemInfo from "./components/ItemInfo";
-import Test from "./containers/[ TEST ]";
 import ActiveUsersOrders from "./components/ActiveUsersOrders";
 import AllOrders from "./containers/AllOrders";
 import AllUsers from "./containers/AllUsers";
@@ -20,9 +19,6 @@ import UpdateItem from "./containers/UpdateItem";
 
 import {Provider} from "react-redux";
 import store from './store';
-import {is_user_staff} from "./actions/auth";
-import {connect} from "react-redux";
-import {mapStateToPropsFactory} from "react-redux/es/connect/mapStateToProps";
 
 
 const App = () => {
@@ -44,20 +40,10 @@ const App = () => {
                         <Route path='/users' element={<AllUsers/>}/>
                         <Route path='/new_item' element={<NewItem/>}/>
                         <Route path='/update_item' element={<UpdateItem/>}/>
-
-
-
-                        <Route path='/test' element={<Test/>}/>
-
-                        {/*<Route exact path='/' component={Home}/>*/}
-                        {/*<Route exact path='/register' component={Register}/>*/}
-                        {/*<Route exact path='/login' component={Login}/>*/}
-                        {/*<Route exact path='/dashboard' component={Dashboard}/>*/}
                     </Routes>
                 </Layout>
             </Router>
         </Provider>
     )
 }
-// export default connect(null, {is_user_staff})(App);
 export default App;

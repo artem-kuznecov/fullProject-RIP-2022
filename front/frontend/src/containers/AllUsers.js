@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import OrderInfo from "../components/OrderInfo";
 import UserInfo from "../components/UserInfo";
 
 const AllUsers = () => {
@@ -29,14 +28,11 @@ const AllUsers = () => {
             {users.map((item, index) => {
                 return (
                     <div className='d-ib flex m-1 d-flex flex-wrap'>
-                        <UserInfo key={index}
-                                   {...item}
-                        />
+                        <UserInfo key={index} {...item}/>
                     </div>
                 );
             })}
         </div>
     );
 };
-
 export default AllUsers;

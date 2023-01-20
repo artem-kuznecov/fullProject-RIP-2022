@@ -13,17 +13,11 @@ import {
 
 const initialState = {
     isAuthenticated: null,
-    is_staff: null,
-    // username:'',
-    // first_name:'',
-    // last_name:'',
-    // phone:'',
-    // email:''
+    is_staff: null
 }
 
 export default function (state = initialState, action) {
     const {type, payload} = action;
-
     switch (type) {
         case CHECK_STAFF_SUCCESS:
             return {
@@ -50,15 +44,13 @@ export default function (state = initialState, action) {
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: true,
-                // username: payload
+                isAuthenticated: true
             }
         case LOGOUT_SUCCESS:
         case DELETE_USER_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: false,
-                // username: ''
+                isAuthenticated: false
             }
         case REGISTER_FAIL:
         case LOGIN_FAIL:

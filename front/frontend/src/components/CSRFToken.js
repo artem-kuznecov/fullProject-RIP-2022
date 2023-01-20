@@ -24,7 +24,6 @@ const CSRFToken = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // await axios.get(`${process.env.REACT_APP_API_URL}/accounts/csrf_cookie`, { withCredentials: true })
                 await axios.get(`http://localhost:8000/accounts/csrf_cookie`, { withCredentials: true })
             } catch (err) {
                 console.log('бля, не смог взять куки)')

@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Link, Navigate, useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 import ItemInfoCard from "./ItemInfoCard";
 import {connect} from "react-redux";
 import {saver} from "../actions/cart";
-import UpdateItem from "../containers/UpdateItem";
 
 
 const ItemInfo = ({is_staff, pk_helper, saver}) => {
@@ -21,7 +20,6 @@ const ItemInfo = ({is_staff, pk_helper, saver}) => {
             headers: {
                 'Accept':'application/json',
                 'Content-Type':'application/json',
-                // 'X-CSRFToken': Cookies.get('csrftoken')
             }
         }
         axios.get(src, config)
@@ -29,8 +27,6 @@ const ItemInfo = ({is_staff, pk_helper, saver}) => {
                 setItems(data.data);
             })
     }, []);
-
-
 
     const deleteItem = () => {
         const config = {
@@ -54,12 +50,9 @@ const ItemInfo = ({is_staff, pk_helper, saver}) => {
             {items.map((item, index) => {
                 return (
                     <div className='d-ib flex m-1 d-inline-block'>
-                        <ItemInfoCard key={index}
-                                      {...item}
-                        />
+                        <ItemInfoCard key={index} {...item}/>
                         {is_staff? <button className='btn btn-primary' onClick={deleteItem}>Удалить</button>: null}<br/>
                         {is_staff? <Link to='/update_item' className='btn btn-primary mt-10' onClick={savePk}>Править</Link>: null}
-                        {/*{is_staff? <button className='btn btn-primary' onClick={updateItem}>Править</button>: null}*/}
                     </div>
 
                 );

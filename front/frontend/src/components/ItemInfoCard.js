@@ -3,8 +3,6 @@ import '../index.css';
 
 
 const ItemInfoCard = ({name, price, image, description, ssilka}) => {
-
-
     return(
         <div className='container'>
             <img className='info' width={200} height={200} src={ssilka} alt='исправь картинку даун'></img>

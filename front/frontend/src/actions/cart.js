@@ -27,19 +27,10 @@ export const create_order = (item_id, user_id) => async dispatch => {
 
         if (res.data.success) {
             console.log(CREATE_ORDER_SUCCESS)
-            // dispatch({
-            //     type: CREATE_ORDER_SUCCESS
-            // })
         } else {
-            // dispatch({
-            //     type: CREATE_ORDER_FAIL
-            // })
             console.log(CREATE_ORDER_FAIL)
         }
     } catch (err) {
-        // dispatch({
-        //     type: CREATE_ORDER_FAIL
-        // })
         console.log(CREATE_ORDER_FAIL)
     }
 };
@@ -84,19 +75,10 @@ export const update_status = (status, pk) => async dispatch => {
 
         if (res.data.success) {
             console.log('STATUS_UPDATE_SUCCESS')
-            // dispatch({
-            //     type: CREATE_ORDER_SUCCESS
-            // })
         } else {
-            // dispatch({
-            //     type: CREATE_ORDER_FAIL
-            // })
             console.log('STATUS_UPDATE_FAIL')
         }
     } catch (err) {
-        // dispatch({
-        //     type: CREATE_ORDER_FAIL
-        // })
         console.log('STATUS_UPDATE_SUCCESS')
     }
 };
@@ -118,19 +100,10 @@ export const new_item = (name, price, ssilka, description) => async dispatch => 
 
         if (res.data.created) {
             console.log(CREATE_GOOD_SUCCESS)
-            // dispatch({
-            //     type: CREATE_ORDER_SUCCESS
-            // })
         } else {
-            // dispatch({
-            //     type: CREATE_ORDER_FAIL
-            // })
             console.log(CREATE_GOOD_FAIL)
         }
     } catch (err) {
-        // dispatch({
-        //     type: CREATE_ORDER_FAIL
-        // })
         console.log(CREATE_GOOD_FAIL)
     }
 };

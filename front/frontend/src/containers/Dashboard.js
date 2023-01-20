@@ -7,7 +7,6 @@ import {Navigate} from "react-router-dom";
 import axios from "axios";
 
 
-
 const Dashboard = ({delete_account, update_profile, first_name_global, last_name_global, phone_global, email_global, checkAuthenticated, isAuthenticated}) => {
 
     const [profileUpdated, setProfileUpdated] = useState(false);
@@ -16,10 +15,6 @@ const Dashboard = ({delete_account, update_profile, first_name_global, last_name
         last_name: '',
         phone: '',
         email: ''
-        // first_name: first_name_global,
-        // last_name: last_name_global,
-        // phone: phone_global,
-        // email: email_global
     });
     const {first_name, last_name, phone, email} = formData;
 
@@ -37,7 +32,6 @@ const Dashboard = ({delete_account, update_profile, first_name_global, last_name
 
     const onSubmit = e => {
         e.preventDefault();
-
         update_profile(first_name, last_name, phone, email);
     }
 
@@ -95,11 +89,8 @@ const Dashboard = ({delete_account, update_profile, first_name_global, last_name
                         />
                     </div>
 
-                    {/*<button className='btn btn-primary mt-3' type='submit'>Update</button>*/}
+                    <button className='btn btn-primary mt-3' type='submit'>Изменить</button>
                 </form>
-                {/*<p className='mt-3'>*/}
-                {/*    Click the button below to delete your account:*/}
-                {/*</p>*/}
                 <a className='btn btn-danger mt-3' onClick={delete_account}>
                     Удалить аккаунт
                 </a>
@@ -111,7 +102,6 @@ const Dashboard = ({delete_account, update_profile, first_name_global, last_name
         )
     }
 };
-
 const mapStateToProps = state => ({
     first_name_global: state.profile.first_name,
     last_name_global: state.profile.last_name,
@@ -119,5 +109,4 @@ const mapStateToProps = state => ({
     email_global: state.profile.email,
     isAuthenticated: state.auth.isAuthenticated
 })
-
 export default connect(mapStateToProps, {update_profile, delete_account, checkAuthenticated})(Dashboard);

@@ -23,8 +23,6 @@ const NewItem = ({new_item}) => {
         return <Navigate to='/catalog'/>
     }
 
-
-
     return (
         <div className='container mt-3'>
             <h1 className='display-4'>Форма добавления нового товара в каталог</h1>
@@ -82,7 +80,5 @@ const NewItem = ({new_item}) => {
             </form>
         </div>
     )
-
 };
-
 export default connect(null, {new_item})(NewItem);

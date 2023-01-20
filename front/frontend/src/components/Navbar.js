@@ -1,8 +1,7 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment} from 'react';
 import {Link, NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import {logout} from "../actions/auth";
-import axios from "axios";
 
 const Navbar = ({isAuthenticated, logout, username, is_staff}) => {
     const staffLinks = (
@@ -59,24 +58,14 @@ const Navbar = ({isAuthenticated, logout, username, is_staff}) => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                        {/*<li className="nav-item">*/}
-                        {/*    <NavLink className="nav-link" to='/'>Домашнаяя страница</NavLink>*/}
-                        {/*</li>*/}
-                        {/*<li className="nav-item">*/}
-                        {/*    <NavLink className="nav-link" to='/test'>TEST</NavLink>*/}
-                        {/*</li>*/}
                         <li className="nav-item">
                             <NavLink className="nav-link" to='/catalog'>Каталог</NavLink>
                         </li>
                         {!is_staff && isAuthenticated? <li className="nav-item">
                             <NavLink className="nav-link" to='/orders'>Мои Заказы</NavLink>
                         </li>: null}
-                        {/*<li className="nav-item">*/}
-                        {/*    <NavLink className="nav-link" to='/test'>TEST</NavLink>*/}
-                        {/*</li>*/}
                         {isAuthenticated && is_staff? staffLinks: null}
                         {isAuthenticated? authLinks: guestLinks}
-
                     </ul>
                 </div>
             </div>

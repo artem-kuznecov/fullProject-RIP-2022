@@ -1,0 +1,62 @@
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
+import ItemCard from "./ItemCard";
+import OrderInfo from "./OrderInfo";
+
+// const getOrders = (items, setItems) => {
+//     const config = {
+//         withCredentials: true,
+//         headers: {
+//             'Accept':'application/json',
+//             'Content-Type':'application/json',
+//             // 'X-CSRFToken': Cookies.get('csrftoken')
+//         }
+//     }
+//     axios.get('http://localhost:8000/shop/active_user_orders', config)
+//         .then(res => {
+//             // setItems(res.data)
+//             // console.log('заказы >', res.data)
+//             // console.log('items >', items)
+//         })
+// }
+
+
+
+const ActiveUsersOrders = () => {
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/shop/active_user_orders', {
+            method: 'GET',
+            credentials: "include",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(json =>{
+                setItems(json)
+            })
+
+    }, [])
+
+    return (
+        <div className='container'>
+            <h2 className='mb-40 mt-20'>Мои заказы:</h2>
+            {items.map((item, index) => {
+                return (
+                    <div className='d-ib flex m-1'>
+                        <OrderInfo key={index}
+                                  {...item}
+                        />
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+export default ActiveUsersOrders;

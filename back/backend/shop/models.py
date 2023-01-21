@@ -6,19 +6,12 @@ from django.contrib.auth.models import User
 from user_profile.models import UserProfile
 
 
-# СТАТУСЫ ЗАКАЗА:
-# в обработке, отменен, подтвержден, в пути, готов к выдаче
-
-# отменен <- в обработке -> подтвержден -> в пути -> готов к выдаче
-
-
 class Goods(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, verbose_name="Название товара")
     price = models.IntegerField(verbose_name="Цена товара")
     image = models.CharField(max_length=100, verbose_name="Фото товара")
     description = models.CharField(max_length=255, verbose_name="Описание товара")
-    # img = models.ImageField(null=True, blank=True, upload_to='images/', verbose_name='Фотка')
     ssilka = models.URLField(max_length=200, default='')
 
     def __str__(self):

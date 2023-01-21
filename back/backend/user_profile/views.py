@@ -5,7 +5,6 @@ from rest_framework.views import APIView
 from .models import UserProfile
 from .serializers import UserProfileSerializer
 
-
 class GetUserProfileView(APIView):
     def get(self, request, format=None):
         try:
@@ -33,8 +32,6 @@ class UpdateUserProfileView(APIView):
             last_name = data['last_name']
             phone = data['phone']
             email = data['email']
-
-            # user = User.objects.get(id=user.id)
 
             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name, phone=phone, email=email)
 

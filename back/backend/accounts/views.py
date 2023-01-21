@@ -31,29 +31,8 @@ class CheckAuthenticated(APIView):
                 return Response({'isAuthenticated': 'success', 'is_staff': staffCheck})
             else:
                 return Response({'isAuthenticated': 'error', 'is_staff': staffCheck})
-
-            # if isAuthenticated:
-            #     if staff:
-            #         return Response({'isAuthenticated': 'success', 'isStaff': 'true'})
-            #     else:
-            #         return Response({'isAuthenticated': 'success', 'isStaff': 'false'})
-            # else:
-            #     return Response({'isAuthenticated': 'error'})
         except:
             return Response({'error': 'error checking authentication status'})
-# class CheckAuthenticated(APIView):
-#     def get(self, request, format=None):
-#         # user = self.request.user
-
-#         try:
-#             isAuthenticated = User.is_authenticated
-
-#             if isAuthenticated:
-#                 return Response({ 'isAuthenticated': 'success' })
-#             else:
-#                 return Response({ 'isAuthenticated': 'error' })
-#         except:
-#             return Response({ 'error': 'Something went wrong when checking authentication status' })
 
 
 @method_decorator(csrf_protect, name='dispatch')
@@ -72,12 +51,10 @@ class SignupView(APIView):
                 return Response({'error': 'username is already taken'})
             else:
                 user = User.objects.create_user(username=username, password=password)
-                # user.save()
 
                 user = User.objects.get(id=user.id)
 
                 user_profile = UserProfile.objects.create(user=user, first_name='', last_name='', phone='', email='')
-                # user_profile.save()
 
                 return Response({'success': 'user created successfully'})
         else:
@@ -156,13 +133,10 @@ class CreateStaffView(APIView):
                     return Response({'error': 'username is already taken'})
                 else:
                     user = User.objects.create_user(username=username, password=password, is_staff=True)
-                    # user.save()
 
                     user = User.objects.get(id=user.id)
 
-                    user_profile = UserProfile.objects.create(user=user, first_name='', last_name='', phone='',
-                                                              email='')
-                    # user_profile.save()
+                    user_profile = UserProfile.objects.create(user=user, first_name='', last_name='', phone='', email='')
 
                     return Response({'success': 'user created successfully'})
             else:

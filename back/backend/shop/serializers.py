@@ -32,10 +32,8 @@ class GoodsSimpleSerializer(serializers.ModelSerializer):
 
 
 class GoodsSerializer(serializers.Serializer):
-    # pk = serializers.IntegerField()
     name = serializers.CharField(max_length=50)
     price = serializers.IntegerField()
-    # image = serializers.CharField()
     description = serializers.CharField()
     ssilka = serializers.CharField()
 
@@ -43,10 +41,8 @@ class GoodsSerializer(serializers.Serializer):
         return Goods.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        # instance.id = validated_data.get('id', instance.name)
         instance.name = validated_data.get('name', instance.name)
         instance.price = validated_data.get('price', instance.price)
-        # instance.image = validated_data.get('image', instance.image)
         instance.description = validated_data.get('description', instance.description)
         instance.ssilka = validated_data.get('ssilka', instance.ssilka)
         instance.save()
@@ -60,11 +56,7 @@ class OrdersSimpleSerializer(serializers.ModelSerializer):
 
 
 class OrdersSerializer(serializers.Serializer):
-    # pk = serializers.IntegerField()
-    # item_id = serializers.IntegerField()
-    # user_id = serializers.IntegerField()
     status = serializers.CharField()
-    # username = serializers.CharField()
 
     def create(self, validated_data):
         item_id = serializers.IntegerField()
@@ -73,11 +65,6 @@ class OrdersSerializer(serializers.Serializer):
 
     def update(self, instance, validated_data):
         instance.status = validated_data.get('status', instance.status)
-        # instance.id = validated_data.get('id', instance.name)
-        # instance.name = validated_data.get('name', instance.name)
-        # instance.price = validated_data.get('price', instance.price)
-        # instance.image = validated_data.get('image', instance.image)
-        # instance.description = validated_data.get('description', instance.description)
         instance.save()
         return instance
 
